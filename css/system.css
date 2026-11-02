@@ -1,0 +1,33 @@
+.system-section { padding:110px 0 130px; background:#0D1623; }
+.system-intro { margin-bottom:60px; }
+.system-tagline { font:clamp(17px,2.3vw,23px) var(--site-font-heading); color:var(--ivory); margin:18px 0 9px; }
+.system-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px; }
+.system-card { background:#111B2B; border:1px solid rgba(237,232,218,.14); min-width:0; transition:border-color .2s,transform .2s; }
+.system-card:last-child { grid-column:1/-1; display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); align-items:stretch; }
+.system-card:last-child .system-card__image { aspect-ratio:auto; min-height:100%; }
+.system-card:hover { border-color:rgba(214,173,88,.6); transform:translateY(-2px); }
+.system-card__image { aspect-ratio:16/9; min-height:0; }
+.system-card__body { padding:30px 32px 34px; }
+.system-card__index { color:var(--gold); font-size:16px; letter-spacing:.18em; }
+.system-card h3 { font:23px/1.5 var(--site-font-heading); font-weight:400; margin:10px 0 6px; }
+.system-card__english { font-size:16px; color:var(--blue); letter-spacing:.12em; }
+.system-card p { font-size:16px; line-height:1.95; color:#C1CBD5; margin-top:22px; }
+.system-card h4 { font:14px var(--site-font-heading); font-weight:400; margin:32px 0 0; color:var(--ivory); }
+.system-card__sub-copy { margin-top:12px; font-size:16px; }
+@media (max-width:820px) {
+ .system-section { padding:75px 0; }
+ .system-card__body { padding:20px; }
+ .system-card h3 { font-size:21px; }
+}
+@media (max-width:560px) {
+ .system-section { padding:65px 0; }
+ .system-grid { grid-template-columns:1fr; gap:18px; }
+ .system-card:last-child { grid-column:auto; display:block; }
+ .system-card__image,.system-card:last-child .system-card__image { aspect-ratio:16/9; min-height:0; }
+ .system-card__body { padding:21px; }
+}
+
+/* Embedded gameplay screenshots */
+.system-card__image { display:block; width:100%; height:auto; object-fit:cover; aspect-ratio:16/9; border-bottom:1px solid rgba(237,232,218,.12); }
+.system-card:last-child .system-card__image { height:100%; min-height:100%; object-fit:cover; }
+@media (max-width:560px) { .system-card:last-child .system-card__image { height:auto; min-height:0; aspect-ratio:16/9; } }

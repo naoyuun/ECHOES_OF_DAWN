@@ -1,0 +1,82 @@
+.characters-section { padding:100px 0 110px; background:radial-gradient(ellipse at 55% 40%,rgba(36,54,75,.32),transparent 60%); }
+.characters-section__intro { margin-bottom:0; }
+.characters-layout { display:grid; grid-template-columns:240px minmax(0,1fr); gap:44px; margin-top:48px; }
+.character-selector { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; align-content:start; }
+.character-selector__button { padding:0; border:1px solid rgba(237,232,218,.2); background:#172435; color:#B8C1CB; transition:border-color .2s,background .2s,transform .2s; text-align:center; min-width:0; }
+.character-selector__button:hover { border-color:var(--blue); transform:translateY(-2px); }
+.character-selector__button[aria-pressed="true"] { border:1px solid var(--gold); box-shadow:0 0 0 1px rgba(214,173,88,.18); color:var(--white); background:#24364B; }
+.character-selector__portrait { height:76px; display:grid; place-items:center; background:#030405; color:#D6AD58; font:16px var(--site-font-heading); letter-spacing:.05em; }
+.character-selector__name { display:block; font-size:16px; padding:8px 3px 9px; line-height:1.3; }
+.character-detail { min-width:0; display:grid; grid-template-columns:minmax(180px,.82fr) minmax(0,1.18fr); gap:34px; align-items:stretch; }
+.character-detail__art { min-height:450px; height:100%; }
+.character-detail__info { padding:15px 0; animation:slide-in .28s ease both; }
+@keyframes slide-in { from{opacity:.55;transform:translateX(12px)} to{opacity:1;transform:translateX(0)} }
+.character-detail__number { color:var(--gold); font-size:16px; letter-spacing:.18em; }
+.character-detail__english { font:clamp(19px,2.5vw,27px)/1.3 var(--site-font-heading); letter-spacing:.05em; margin:10px 0 2px; overflow-wrap:anywhere; }
+.character-detail__japanese { font:18px var(--site-font-heading); color:var(--ivory); margin:0 0 17px; }
+.character-detail__meta { display:inline-block; border-top:1px solid var(--gold); border-bottom:1px solid var(--gold); color:#D6DDE5; font-size:16px; padding:5px 0; margin-bottom:19px; }
+.character-detail__description { font-size:16px; color:#C1CBD5; }
+.character-detail__controls { display:flex; justify-content:space-between; gap:12px; margin-top:30px; }
+.character-detail__control { border:1px solid var(--line); background:transparent; color:var(--ivory); padding:9px 13px; font-size:16px; letter-spacing:.06em; transition:background .2s,border-color .2s; }
+.character-detail__control:hover { border-color:var(--gold); background:rgba(214,173,88,.08); }
+@media (max-width:820px) {
+ .characters-section { padding:75px 0; }
+ .characters-layout { grid-template-columns:1fr; gap:26px; }
+ .character-selector { grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; }
+ .character-selector__portrait { height:62px; font-size:16px; }
+ .character-detail { grid-template-columns:minmax(150px,.8fr) minmax(0,1.2fr); gap:24px; }
+ .character-detail__art { min-height:380px; }
+}
+@media (max-width:560px) {
+ .characters-section { padding:65px 0; }
+ .character-selector { grid-template-columns:repeat(5,minmax(0,1fr)); gap:5px; }
+ .character-selector__portrait { height:49px; font-size:16px; letter-spacing:0; }
+ .character-selector__name { display:none; }
+ .character-detail { position:relative; display:block; min-height:570px; }
+ .character-detail__art { position:absolute; inset:0; z-index:0; min-height:0; height:570px; background:transparent; border:0; }
+ .character-detail__art::before,.character-detail__art::after { display:none; }
+ .character-detail__art > div { position:absolute; top:16px; left:50%; transform:translateX(-50%); opacity:.65; }
+ .character-detail__info { position:relative; z-index:1; padding:285px 12px 0; background:linear-gradient(180deg,transparent 0%,rgba(17,27,43,.72) 38%,rgba(17,27,43,.96) 62%); }
+ .character-detail__english { font-size:24px; }
+ .character-detail__description { font-size:16px; }
+}
+
+
+/* キャラクター画像：立ち絵を大きくなりすぎないよう調整 */
+.character-selector__portrait { position:relative; overflow:hidden; width:100%; height:auto; aspect-ratio:1 / 1; background:#111B2B; }
+.character-selector__portrait img { display:block; width:100%; height:100%; object-fit:cover; object-position:center 18%; }
+.character-detail__art--has-image {
+  position:relative; display:flex; align-items:flex-end; justify-content:center;
+  min-height:520px; max-height:600px; overflow:hidden;
+  background:radial-gradient(ellipse at 50% 65%,rgba(113,155,192,.2),transparent 65%),linear-gradient(180deg,rgba(36,54,75,.15),rgba(17,27,43,.45));
+  border:1px solid rgba(237,232,218,.12);
+}
+.character-detail__art--has-image::before,.character-detail__art--has-image::after { display:none; }
+.character-detail__full-image {
+  display:block; width:auto; max-width:100%; height:auto; max-height:560px;
+  object-fit:contain; object-position:center bottom;
+}
+@media (max-width:820px) {
+  .character-selector__portrait { height:auto; aspect-ratio:1 / 1; }
+  .character-detail__art--has-image { min-height:460px; max-height:520px; }
+  .character-detail__full-image { max-height:490px; }
+}
+@media (max-width:560px) {
+  .character-selector__portrait { height:auto; aspect-ratio:1 / 1; }
+  .character-detail { position:relative; display:block; min-height:500px; }
+  .character-detail__art--has-image { position:absolute; inset:0; z-index:0; min-height:0; max-height:none; height:500px; border:0; background:transparent; }
+  .character-detail__full-image { width:auto; max-width:100%; height:460px; max-height:460px; object-fit:contain; object-position:center top; }
+  .character-detail__info { padding-top:235px; }
+}
+
+
+/* 立ち絵の外枠をなくし、顔アイコン選択時にスクロールする */
+.character-detail__art--has-image {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  scroll-margin-top: 88px;
+}
+@media (max-width:560px) {
+  .character-detail__art--has-image { scroll-margin-top: 76px; }
+}
